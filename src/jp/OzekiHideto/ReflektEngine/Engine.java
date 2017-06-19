@@ -35,7 +35,6 @@ public class Engine implements Runnable{
 		window.setVisible(true);
 		window.setResizable(false);
 		window.setLocationRelativeTo(null);
-		window.setIgnoreRepaint(true);
 		window.createBufferStrategy(2);
 		str = window.getBufferStrategy();
 		this.run();
@@ -71,7 +70,6 @@ public class Engine implements Runnable{
 		int fps = 0;
 		int tps = 0;
 		long timer = System.currentTimeMillis();
-		//init
 		init();
 		while(true){
 			double now = System.nanoTime();

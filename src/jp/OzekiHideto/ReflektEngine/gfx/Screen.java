@@ -21,7 +21,6 @@ public class Screen {
 		xoffset = 0;
 		yoffset = 0;
 	}
-
 	public void clear(int col) {
 		for (int i = 0; i < w * h; i++) {
 			pixels[i] = col;
@@ -139,9 +138,8 @@ public class Screen {
 	}
 
 	public void draw(int[] pix) {
-		for (int i = 0; i < w * h; i++) {
-			// pix[i] = bright[i];
-			pix[i] = blend(pixels[i], bright[i], 0.5);
+		for (int i = 0; i < pixels.length; i++) {
+			pix[i] = pixels[i];
 		}
 	}
 
