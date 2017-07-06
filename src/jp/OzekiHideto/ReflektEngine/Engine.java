@@ -17,8 +17,9 @@ public class Engine implements Runnable{
 	public int my = 0;
 	public int oldmx = 0;
 	public int oldmy = 0;
-	public boolean initialized = false;
 	public int scale;
+	public int framespersecond = 0;
+	public int tickpersecond = 0;
 	public JFrame window;
 	BufferStrategy str;
 	BufferedImage image;
@@ -39,10 +40,9 @@ public class Engine implements Runnable{
 		str = window.getBufferStrategy();
 		this.run();
 	}
-	public void draw(){
-		
-	}
 	public void init(){
+	}
+	public void draw(){
 		
 	}
 	void render(){
@@ -79,16 +79,32 @@ public class Engine implements Runnable{
 				delta--;
 				tick();
 				tps++;
-			}else {
+			}else{
 				render();
 				fps++;
 			}
 			if(System.currentTimeMillis()-timer >= 1000){
 				timer+=1000;
 				System.out.println("fps : "+fps+" tps : "+tps);
+				tickpersecond = tps;
+				framespersecond = fps;
 				fps = 0;
 				tps = 0;
 			}
 		}
+	}
+	public static int max(int num[]){
+		int res = 0;
+		for(int i = 0;i < num.length;i++){
+			if(res < num[i])res = num[i];
+		}
+		return res;
+	}
+	public static int min(int num[]){
+		int res = max(num);
+		for(int i = 0;i < num.length;i++){
+			if(res > num[i])res = num[i];
+		}
+		return res;
 	}
 }
